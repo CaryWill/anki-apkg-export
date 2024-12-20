@@ -67,10 +67,10 @@ export default class {
     this.media.push({ filename, data });
   }
 
-  addCard(front, back, { tags } = {}) {
+  addCard(front, back, { tags, guid, yomikata, note } = {}) {
     const { topDeckId, topModelId, separator } = this;
     const now = Date.now();
-    const note_guid = this._getNoteGuid(topDeckId, front, back);
+    const note_guid = guid || this._getNoteGuid(topDeckId, front, back);
     const note_id = this._getNoteId(note_guid, now);
 
     let strTags = '';
@@ -80,6 +80,7 @@ export default class {
       strTags = this._tagsToStr(tags);
     }
 
+    // TODO: card type
     this._update('insert or replace into notes values(:id,:guid,:mid,:mod,:usn,:tags,:flds,:sfld,:csum,:flags,:data)', {
       ':id': note_id, // integer primary key,
       ':guid': note_guid, // text not null,
@@ -87,7 +88,7 @@ export default class {
       ':mod': this._getId('notes', 'mod', now), // integer not null,
       ':usn': -1, // integer not null,
       ':tags': strTags, // text not null,
-      ':flds': front + separator + back, // text not null,
+      ':flds': front + separator + back + separator + yomikata + separator + note, // text not null,
       ':sfld': front, // integer not null,
       ':csum': this._checksum(front + separator + back), //integer not null,
       ':flags': 0, // integer not null,

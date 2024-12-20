@@ -1,5 +1,5 @@
 export default function createTemplate({
-  questionFormat = '{{Front}}',
+  questionFormat = '{{Front}}{{Yomikata}}',
   answerFormat = '{{FrontSide}}\n\n<hr id="answer">\n\n{{Back}}',
   css = '.card {\n font-family: arial;\n font-size: 20px;\n text-align: center;\n color: black;\nbackground-color: white;\n}\n'
 } = {}) {
@@ -43,6 +43,24 @@ export default function createTemplate({
           sticky: false,
           rtl: false,
           ord: 1,
+          font: 'Arial',
+          size: 20
+        },
+        {
+          name: 'Yomikata',
+          media: [],
+          sticky: false,
+          rtl: false,
+          ord: 2,
+          font: 'Arial',
+          size: 20
+        },
+        {
+          name: 'Note',
+          media: [],
+          sticky: false,
+          rtl: false,
+          ord: 3,
           font: 'Arial',
           size: 20
         }

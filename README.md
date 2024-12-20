@@ -6,6 +6,10 @@ Universal module for generating decks for Anki.
 
 Port of the Ruby gem https://github.com/albertzak/anki2
 
+## TODO
+
+- [ ] 需要注意下 guid 重复性测试
+
 ## Install
 
 ```
