@@ -1,7 +1,129 @@
 export default function createTemplate({
-  questionFormat = '{{Front}}{{Yomikata}}',
-  answerFormat = '{{FrontSide}}\n\n<hr id="answer">\n\n{{Back}}',
-  css = '.card {\n font-family: arial;\n font-size: 20px;\n text-align: center;\n color: black;\nbackground-color: white;\n}\n'
+  questionFormat = '<div id="front-box"> <div id="front"> {{Front}} </div> </div>'.replace(/'/g, '"'),
+  answerFormat = '<div id="back"> <div id="note-box"><span id="note">{{Note}}</span></div> {{Back}} </div>'.replace(
+    /'/g,
+    '"'
+  ),
+  css = `#back {
+	text-align: left;
+}
+
+#front {
+	font-size: 20px;
+	text-align: center;
+}
+
+.replay-button {
+  width: 25px;
+  height: 25px;
+}
+
+#front-box {
+}
+
+* {
+	box-sizing: border-box;
+}
+
+#note-box {
+	display: flex;
+	align-items: center;
+}
+
+#note {
+	font-style: italic;
+	margin-left: 5px;
+	padding-top: 5px;
+	color: hsl(148, 35%, 69%);
+}
+
+#note:not(:empty)::before {
+	content: '📝';
+	margin-right: 5px;
+	font-style: normal;
+}
+
+.explanation,
+.explanation-front {
+	margin-bottom: 3px;
+}
+
+body {
+	word-wrap: break-word;
+	text-align: left;
+	counter-reset: explanation_counter;
+	position: relative;
+	font-family: Hiragino Mincho ProN;
+}
+
+.explanation-front::before {
+	content: '▪︎';
+	margin-right: 5px;
+}
+
+.explanation::before {
+	counter-increment: explanation_counter;
+	content: counter(explanation_counter) '、';
+}
+
+.explanation,
+.explanation-front {
+	font-size: 16px;
+	display: inline-block;
+	background-color: rgb(201, 201, 201);
+}
+
+.sentence {
+	padding-left: 24px;
+}
+
+.cixingtiaozhuan {
+	font-size: 18px;
+	display: inline-block;
+	border-style: solid;
+	border-width: 1px;
+	border-radius: 12px;
+}
+
+.cixingtiaozhuan_part {
+	padding-left: 5px;
+	padding-right: 5px;
+}
+
+a:link,
+a:visited {
+	font-weight: 700;
+	font-size: 16px;
+	text-decoration: none;
+	color: rgb(102, 101, 101);
+}
+
+.cixing_title {
+	font-size: 14px;
+	font-weight: 600;
+	display: table;
+	border-style: solid;
+	border-width: 1px;
+	margin-top: 12px;
+	padding-left: 2px;
+	padding-right: 2px;
+	margin-bottom: 4px;
+}
+
+.sentence_o::before {
+	font-size: 16px;
+	content: '●';
+}
+
+.sentence_o {
+	font-size: 14px;
+}
+
+.sentence_t {
+	padding-left: 12px;
+	font-size: 13px;
+	color: rgb(143, 143, 143);
+}`.replace(/'/g, '"')
 } = {}) {
   const conf = {
     nextPos: 1,
