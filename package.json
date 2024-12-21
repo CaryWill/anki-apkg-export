@@ -39,7 +39,7 @@
   "preferGlobal": "true",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ewnd9/anki-apkg-export.git"
+    "url": "git@github.com:CaryWill/anki-apkg-export.git"
   },
   "scripts": {
     "build": "babel -d dist src",
