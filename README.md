@@ -10,7 +10,8 @@ Port of the Ruby gem https://github.com/albertzak/anki2
 
 注意：template.js questionFormat 和 answerFormat 里不能存单引号。
 
-- [ ] 需要注意下 guid 重复性测试
+- [x] 需要注意下 guid 重复性测试
+- [ ] npm publish 前得 npm login
 
 ## Install
 
