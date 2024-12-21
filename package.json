@@ -1,5 +1,5 @@
 {
-  "name": "@cary/anki-apkg-export",
+  "name": "anki-apkg-export-cary",
   "description": "Generate decks for Anki (spaced repetition software)",
   "version": "5.0.0",
   "main": "dist/index.js",
