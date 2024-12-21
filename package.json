@@ -1,5 +1,5 @@
 {
-  "name": "anki-apkg-export",
+  "name": "@cary/anki-apkg-export",
   "description": "Generate decks for Anki (spaced repetition software)",
   "version": "5.0.0",
   "main": "dist/index.js",
@@ -39,7 +39,7 @@
   "preferGlobal": "true",
   "repository": {
     "type": "git",
-    "url": "git@github.com:CaryWill/anki-apkg-export.git"
+    "url": "git+ssh://git@github.com/CaryWill/anki-apkg-export.git"
   },
   "scripts": {
     "build": "babel -d dist src",
@@ -49,5 +49,13 @@
     "prepare": "yarn run build",
     "test": "yarn run lint && ava",
     "test:watch": "yarn run test -- --watch"
-  }
+  },
+  "directories": {
+    "example": "examples",
+    "test": "test"
+  },
+  "bugs": {
+    "url": "https://github.com/CaryWill/anki-apkg-export/issues"
+  },
+  "homepage": "https://github.com/CaryWill/anki-apkg-export#readme"
 }
