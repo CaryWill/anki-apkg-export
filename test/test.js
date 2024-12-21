@@ -24,7 +24,7 @@ test('equals to sample', async t => {
   const now = 1482680798652;
   const clock = sinon.useFakeTimers(now);
 
-  const apkg = new AnkiExport('deck-name');
+  const apkg = new AnkiExport('Basic');
 
   apkg.addMedia('anki.png', fs.readFileSync(__dirname + '/fixtures/anki.png'));
 

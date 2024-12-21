@@ -2,13 +2,15 @@ import sha1 from 'sha1';
 import Zip from 'jszip';
 
 export default class {
-  constructor(deckName, { template, sql }) {
+  constructor(deckName, { template, sql, noteType = 'CustomCard' }) {
     this.db = new sql.Database();
     this.db.run(template);
 
-    const now = Date.now();
-    const topDeckId = this._getId('cards', 'did', now);
-    const topModelId = this._getId('notes', 'mid', now);
+    // const now = Date.now();
+    const noteTypeId = '999'; // 只要是常量的数字就行
+    // third param will create new deck or notetype
+    const topDeckId = this._getId('cards', 'did', noteTypeId);
+    const topModelId = this._getId('notes', 'mid', noteTypeId);
 
     this.deckName = deckName;
     this.zip = new Zip();
@@ -26,7 +28,7 @@ export default class {
 
     const models = this._getInitialRowValue('col', 'models');
     const model = getLastItem(models);
-    model.name = this.deckName;
+    model.name = noteType;
     model.did = this.topDeckId;
     model.id = topModelId;
     models[`${topModelId}`] = model;
@@ -80,7 +82,6 @@ export default class {
       strTags = this._tagsToStr(tags);
     }
 
-    // TODO: card type
     this._update('insert or replace into notes values(:id,:guid,:mid,:mod,:usn,:tags,:flds,:sfld,:csum,:flags,:data)', {
       ':id': note_id, // integer primary key,
       ':guid': note_guid, // text not null,
