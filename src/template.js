@@ -35,6 +35,7 @@ export default function createTemplate({
 	margin-left: 5px;
 	padding-top: 5px;
 	color: hsl(148, 35%, 69%);
+  word-break: break-all;
 }
 
 #note:not(:empty)::before {
