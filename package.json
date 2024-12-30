@@ -1,7 +1,7 @@
 {
   "name": "anki-apkg-export-cary",
   "description": "Generate decks for Anki (spaced repetition software)",
-  "version": "5.0.1",
+  "version": "5.0.2",
   "main": "dist/index.js",
   "dependencies": {
     "jszip": "^3.2.2",
