@@ -7,7 +7,7 @@ if (process.env.APP_ENV === 'browser' || typeof window !== 'undefined') {
   require('script-loader!sql.js');
   sql = window.SQL;
 } else {
-  sql = require('sql.js');
+  sql = require('sql.js/js/sql-memory-growth.js');
 }
 
 export { Exporter };
